@@ -4,8 +4,8 @@ export function Footer() {
   const footerStyle = {
     backgroundColor: "#333",
     color: "#fff",
-    marginTop:"50px",
-    padding: "20px 0",
+    marginTop:"0",
+    padding: "0 0",
     bottom: "0",
     width: "100%",
     textAlign: "center",

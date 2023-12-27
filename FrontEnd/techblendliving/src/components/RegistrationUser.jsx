@@ -13,7 +13,7 @@ export function RegistrationUser (){
           
 
 <body>
-    <div class="login-container">
+    <div class="Reg-container">
         <h1>Register</h1><br />
         <form>
         <div className="toggle-switch-container">

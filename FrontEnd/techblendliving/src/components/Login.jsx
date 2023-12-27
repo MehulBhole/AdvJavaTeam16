@@ -3,7 +3,7 @@ import "../Css/Login.css";
 
 export function Login() {
   return (
-    <html>
+   
       <body class="loginbody">
         <div className="login-container">
           <h1>Login</h1>
@@ -45,6 +45,6 @@ export function Login() {
           </center>
         </div>
       </body>
-    </html>
+   
   );
 }

@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { RegistrationUser } from './components/RegistrationUser';
 import { RegistrationOwner } from './components/RegistrationOwner';
 import { OwnerData } from './components/OwnerData';
+import { OwnderAdmin } from './components/OwnerAdmin';
 
 
 
@@ -19,7 +20,7 @@ function App() {
   <Route path="/login" element={<Login></Login>}></Route>
   <Route path="/registrationuser" element={<RegistrationUser></RegistrationUser>}></Route>
   <Route path="/registrationowner" element={<RegistrationOwner></RegistrationOwner>}></Route>
-  <Route path="/ownersection" element={<OwnerData></OwnerData>}></Route>
+  <Route path="/ownersection" element={<OwnderAdmin></OwnderAdmin>}></Route>
  </Routes>
  <Footer></Footer>
  </BrowserRouter>
