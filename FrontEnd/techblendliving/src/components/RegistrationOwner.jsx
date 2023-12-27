@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import "../Css/RegisterOwner.css";
 
-import { sendOwnerData } from '../services/Owner';
+import { sendOwnerData } from "../services/Owner";
 
 export function RegistrationOwner() {
+  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
+
+    const handleToggleSwitch = () => {
+      setShowAdditionalFields(!showAdditionalFields);
+    };
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    password: '',
-    address: '',
-    dob: '',
-    panNumber: '',
+    name: "",
+    email: "",
+    mobile: "",
+    password: "",
+    address: "",
+    dob: "",
+    panNumber: "",
   });
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,114 +34,122 @@ export function RegistrationOwner() {
     } catch (error) {
       console.log(error);
     }
-    console.log('Form Data:', formData);
+    console.log("Form Data:", formData);
   };
 
   const styles = {
     registrationForm: {
-      maxWidth: '400px',
-      margin: '0 auto',
-      marginBottom: '100px'
+      maxWidth: "400px",
+      margin: "0 auto",
+      marginBottom: "100px",
     },
     form: {
-      backgroundColor: '#fff',
-      padding: '15px',
-      borderRadius: '8px',
-      boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+      backgroundColor: "#fff",
+      padding: "15px",
+      borderRadius: "8px",
+      boxShadow: "0 0 8px rgba(0, 0, 0, 0.1)",
     },
     label: {
-      fontWeight: 'bold',
-      fontSize: '14px',
+      fontWeight: "bold",
+      fontSize: "14px",
     },
     button: {
-      marginTop: '10px',
-      fontSize: '14px',
+      marginTop: "10px",
+      fontSize: "14px",
     },
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={styles.registrationForm}>
-      <div style={styles.form}>
-        <Form.Group controlId="name">
-          <Form.Label style={styles.label}>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Name"
-            name="name"
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+    <body >
+      <div class="regowner-container">
+        <h1>Register</h1>
+        <br />
+        <form>
+          <div className="toggle-switch-container">
+            <label htmlFor="toggle-switch">Owners</label>
+            <br />
+            <div className="toggle-switch">
+              <input
+                type="checkbox"
+                id="toggle-switch"
+                checked={showAdditionalFields}
+                onChange={handleToggleSwitch}
+              />
+              <label htmlFor="toggle-switch"></label>
+            </div>
+          </div>
 
-        <Form.Group controlId="email">
-          <Form.Label style={styles.label}>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter Email"
+          <br />
+          <label for="email">Name</label>
+          <input type="text" id="email" name="email" required></input>
+
+          <label for="email">Email ID</label>
+          <input type="text" id="email" name="email" required></input>
+
+          <label for="email">Password</label>
+          <input type="text" id="email" name="email" required></input>
+
+          <label for="email">Phone Number</label>
+          <input
+            type="text"
+            id="email"
             name="email"
-            onChange={handleChange}
+            maxLength={10}
+            minLength={10}
             required
-          />
-        </Form.Group>
+          ></input>
 
-        <Form.Group controlId="mobile">
-          <Form.Label style={styles.label}>Mobile</Form.Label>
-          <Form.Control
-            type="tel"
-            placeholder="Enter Mobile"
-            name="mobile"
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="password">
-          <Form.Label style={styles.label}>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="address">
-          <Form.Label style={styles.label}>Address</Form.Label>
-          <Form.Control
-            as="textarea"
-            placeholder="Enter Address"
-            name="address"
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="dob">
-          <Form.Label style={styles.label}>Date of Birth</Form.Label>
-          <Form.Control
-            type="date"
-            name="dob"
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="panNumber">
-          <Form.Label style={styles.label}>PAN Number</Form.Label>
-          <Form.Control
+          <label for="email">Pancard Number</label>
+          <input
             type="text"
-            placeholder="Enter PAN Number"
-            name="panNumber"
-            onChange={handleChange}
+            id="email"
+            name="email"
+            maxLength={10}
+            minLength={10}
             required
-          />
-        </Form.Group>
+          ></input>
 
-        <Button variant="primary" type="submit" style={styles.button}>
-          Register
-        </Button>
+          <label for="email">Date of Birth</label>
+          <input type="date" id="email" name="email" required></input>
+
+          <label>Personal Address </label>
+        
+          <textarea className="txtarea"
+             // value={textareaValue}
+             // onChange={handleTextareaChange}
+             rows={4} // Adjust the number of rows as needed
+             cols={10} // Adjust the number of columns as needed
+          />
+             
+      
+            <label for="email">City</label>
+            <input type="text" id="email" name="email" required></input>
+
+          <center>
+            <button className="nxtbtn" type="submit">
+              Next
+            </button>
+          </center>
+        </form>
+        <div class="or-separator">
+          <br />
+          {/* <hr /> */}
+          {/* <center>OR</center><br /> */}
+        </div>
+        {/* <div class="login-options">
+            <a href="#" class="login-google">
+              <p>Register with google </p>
+            <img src="https://img.icons8.com/?size=48&id=17949&format=png" alt="lol" />
+            </a>
+        </div > */}
       </div>
-    </Form>
+      <div className="Foot">
+        <center>
+          <p>
+            New here ? <a href="#">Sign Up</a>
+          </p>
+        </center>
+      </div>
+    </body>
   );
 }
