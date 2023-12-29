@@ -6,6 +6,7 @@ export function Footer() {
     color: "#fff",
     marginTop:"0",
     padding: "0 0",
+   
     bottom: "0",
     width: "100%",
     textAlign: "center",

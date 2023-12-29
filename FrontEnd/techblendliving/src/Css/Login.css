@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     background-image: url(BG5.svg);
+    height: 800px;
 }
 
 .login-container {
