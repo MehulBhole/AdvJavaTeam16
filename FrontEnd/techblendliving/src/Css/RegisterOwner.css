@@ -1,15 +1,10 @@
- body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 1000px;
-    background-image: url(BG5.svg);
-
+.ownercontainer{
+  background-image: url(BG5.svg);
 }
-
 .regowner-container {
+  
     max-width: 25rem;
-	height: 900px;
+	height: 1100px;
     margin: 50px auto 0px;
     padding: 30px;
     background-color: #ffffff;
@@ -92,13 +87,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
-.Foot{
-	max-width: 25rem;
-    padding: 30px;
-    margin: 0px auto;
-    background-color: #ebebeb;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
-}
+
 .txt{
 	color: black;
 	

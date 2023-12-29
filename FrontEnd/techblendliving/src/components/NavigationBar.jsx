@@ -24,8 +24,17 @@ export function NavigationBar() {
               <LinkContainer to="/registrationowner">
                 <Nav.Link>Registration Owner</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/ownersection">
+              <LinkContainer to="/dashboard">
                 <Nav.Link>Owner Section</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/contactus">
+                <Nav.Link>Contact Us</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/host">
+                <Nav.Link>Host</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/userview">
+                <Nav.Link>userview</Nav.Link>
               </LinkContainer>
               <Nav.Link href="#features">Features</Nav.Link>
               <Nav.Link href="#pricing">Pricing</Nav.Link>

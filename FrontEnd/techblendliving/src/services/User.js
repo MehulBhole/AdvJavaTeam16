@@ -10,3 +10,11 @@ export async function sendUserData(formData)
     }
                 
 }
+export async function sendLoginData(userLogin){
+    try {
+        const response  = axios.post("",userLogin);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}

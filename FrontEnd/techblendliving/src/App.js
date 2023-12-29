@@ -6,7 +6,11 @@ import { Footer } from './components/Footer';
 import { RegistrationUser } from './components/RegistrationUser';
 import { RegistrationOwner } from './components/RegistrationOwner';
 import { OwnerData } from './components/OwnerData';
-import { OwnderAdmin } from './components/OwnerAdmin';
+import { OwnderAdmin, OwnerAdmin } from './components/OwnerAdmin';
+import { Dashboard } from './components/DashBoard';
+import { ContactUs } from './components/ContactUs';
+import { Host } from './components/Host';
+import { UserView } from './components/UserView';
 
 
 
@@ -20,7 +24,10 @@ function App() {
   <Route path="/login" element={<Login></Login>}></Route>
   <Route path="/registrationuser" element={<RegistrationUser></RegistrationUser>}></Route>
   <Route path="/registrationowner" element={<RegistrationOwner></RegistrationOwner>}></Route>
-  <Route path="/ownersection" element={<OwnderAdmin></OwnderAdmin>}></Route>
+  <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+  <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
+  <Route path="/host" element={<Host></Host>}></Route>
+  <Route path="/userview" element={<UserView></UserView>}></Route>
  </Routes>
  <Footer></Footer>
  </BrowserRouter>
