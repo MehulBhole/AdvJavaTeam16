@@ -1,20 +1,33 @@
 package com.cdac.controller;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cdac.service.AdminService;
+import com.cdac.service.PropertyOwnerService;
 import com.cdac.dto.AdminRespone;
+import com.cdac.dto.ApprovalUser;
 import com.cdac.entity.Admin;
+import com.cdac.entity.PropertyOwner;
+import com.cdac.entity.PropertyOwner.ApprovalStatus;
 @RestController
+@CrossOrigin
 public class AdminController {
 
  @Autowired
  private AdminService adminService;
+ @Autowired
+ private PropertyOwnerService propertyOwnerService;
 
  @PostMapping("/adminregister")
  public AdminRespone registerAdmin(@RequestBody Admin admin) {
@@ -36,4 +49,23 @@ public class AdminController {
          return new AdminRespone("Invalid credentials.");
      }
  }
-}
+ @GetMapping("/hostapproval")
+ public  List<PropertyOwner> pendingUser() {
+	  List<PropertyOwner> list  =  adminService.propertyOwnerForValidation(); 
+	  return list;
+  }
+ @GetMapping("/hostapprovalbyid/{id}")
+ public  void pendingUser(@PathVariable int id) {
+	  PropertyOwner propertyOwner =   adminService.validationApproved(id);
+	  propertyOwnerService.approvalByHost(propertyOwner);
+	 
+  }
+ @GetMapping("/hostrejectionbyid/{id}")
+ public  void rejectedUser(@PathVariable int id) {
+	  PropertyOwner propertyOwner =   adminService.validationRejected(id);
+	  propertyOwnerService.rejectByHost(propertyOwner);
+	 
+  }
+ 
+ }
+

@@ -23,6 +23,7 @@ public class PropertyOwnerService {
 	public int register(PropertyOwner propertyOwner) {
 		Optional<PropertyOwner> ownerCheck = propertyOwnerRepository.findByEmail(propertyOwner.getEmail());
 		if(!ownerCheck.isPresent()) {
+			propertyOwner.setApprovalStatus(ApprovalStatus.PENDING);
 			PropertyOwner savedOwner = propertyOwnerRepository.save(propertyOwner);
 			return savedOwner.getId();
 		}else {
@@ -30,6 +31,22 @@ public class PropertyOwnerService {
 		}
 		
 	}
+	public void approvalByHost(PropertyOwner propertyOwner) {
+		
+			propertyOwner.setApprovalStatus(ApprovalStatus.APPROVED);
+			PropertyOwner savedOwner = propertyOwnerRepository.save(propertyOwner);
+			
+	
+		
+	}
+	public void rejectByHost(PropertyOwner propertyOwner) {
+		
+		propertyOwner.setApprovalStatus(ApprovalStatus.REJECTED);
+		PropertyOwner savedOwner = propertyOwnerRepository.save(propertyOwner);
+		
+
+	
+}
 	
 	public PropertyOwner login(String email, String password) {
 		Optional<PropertyOwner> ownerLoggedIn = propertyOwnerRepository.findByEmailAndPassword(email, password);

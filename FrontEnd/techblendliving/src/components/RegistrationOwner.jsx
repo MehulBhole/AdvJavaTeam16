@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { sendOwnerData } from "../services/Owner";
 import "../Css/RegisterOwner.css";
+import { useNavigate } from "react-router-dom";
 
 export function RegistrationOwner() {
+  const navigate = useNavigate();
   const [showAdditionalFields, setShowAdditionalFields] = useState(false);
   const handleToggleSwitch = () => {
     setShowAdditionalFields(!showAdditionalFields);
   };
 
   const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Mobile: "",
-    Password: "",
-    Address: "",
-    Dob: "",
-    Pannumber: "",
+    name: "",
+    email: "",
+    phoneNo: "",
+    password: "",
+    address: "",
+    dob: "",
+    panNumber: "",
   });
 
   const handleChange = (e) => {
@@ -28,6 +30,8 @@ export function RegistrationOwner() {
     try {
       const response = await sendOwnerData(formData);
       console.log(response);
+      alert("Wait for Approval !! ");
+      navigate(`/`);
     } catch (error) {
       console.log(error);
     }
@@ -54,20 +58,20 @@ export function RegistrationOwner() {
         </div>
 
         <label >Name</label>
-          <input type="text"  name="Name" onChange={handleChange} required></input>
+          <input type="text"  name="name" onChange={handleChange} required></input>
 
           <label >Email ID</label>
-          <input type="text" name="Email"  onChange={handleChange}  required></input>
+          <input type="text" name="email"  onChange={handleChange}  required></input>
 
           <label >Password</label>
-          <input type="text" name="Password"  onChange={handleChange}  required></input>
+          <input type="text" name="password"  onChange={handleChange}  required></input>
 
           <label >Phone Number</label>
           <input
             type="text"
             maxLength={10}
             minLength={10}
-            name ="Mobile"
+            name ="phoneNo"
             onChange={handleChange} 
             required
           ></input>
@@ -75,7 +79,7 @@ export function RegistrationOwner() {
           <label >Pancard Number</label>
           <input
             type="text"
-            name="Pannumber"
+            name="panNumber"
             maxLength={10}
             minLength={10}
             onChange={handleChange} 
@@ -83,7 +87,7 @@ export function RegistrationOwner() {
           ></input>
 
           <label >Date of Birth</label>
-          <input type="date"  name="Dob" required></input>
+          <input type="dob"  name="dob" required></input>
 
         <div className="form-group">
           <label>Personal Address</label>
@@ -92,13 +96,14 @@ export function RegistrationOwner() {
             rows={4}
             cols={10}
             onChange={handleChange}
-            name="Address"
+            name="address"
           />
         </div>
         <center>
           <button className="nxtbtn" type="submit" >
             Next
           </button>
+
         </center>
       </form>
     </div>

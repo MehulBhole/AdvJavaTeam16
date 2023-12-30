@@ -13,9 +13,10 @@
     background-image: url(./BG5.svg);
 }
 .left{
-    padding: 5%;
+   
     margin: 3%;
     width: 20%;
+    background-color: white;
     border: 2px #e8e8e8 solid;
     border-radius: 15px;
     box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.3);
@@ -32,6 +33,24 @@
     box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
 
 }
+
+.heading{
+
+    margin:3%;
+    margin-top: 8%;
+    height: 100px;
+    text-align: center;
+   
+     
+    
+ }
+ .usericon{
+     text-align: center;
+ }
+ .userdiv{
+     margin-top: 10%;
+     margin-left: 3%;
+ }
 
 .property-container {
     /* max-width: 50rem; */
