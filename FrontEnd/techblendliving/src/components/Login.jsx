@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import "../Css/Login.css"; 
 import { sendLoginData } from "../services/User";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
-  const[userlogin , setUserlogin] =useState({Email:"",Password:""}) ;
+  const navigate = useNavigate();
+  const[userlogin , setUserlogin] =useState({email:"",password:""}) ;
   const handleChange = (e)=>{
       setUserlogin({...userlogin,[e.target.name]:e.target.value});
       console.log(userlogin);
   }
   const handleSubmit=async(e)=>{
+    e.preventDefault();
     try {
       const response = await sendLoginData(userlogin);
+      
+      if(response.data.status){
+        sessionStorage.setItem('id', response.data.id);
+        navigate(`/userview`)
+        
+      }
+      
       console.log(response);
 
     } catch (error) {
@@ -25,10 +35,10 @@ export function Login() {
           <br />
           <form onSubmit={handleSubmit}>
             <label >Email ID</label>
-            <input type="text"  name="Email" onChange={handleChange} required />
+            <input type="text"  name="email" onChange={handleChange} required />
 
             <label >Password</label>
-            <input type="password"  name="Password" required />
+            <input type="password"  name="password"  onChange={handleChange} required />
 
             <center>
               <button className="nxtbtn" type="submit">

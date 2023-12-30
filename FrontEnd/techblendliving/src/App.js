@@ -11,6 +11,7 @@ import { Dashboard } from './components/DashBoard';
 import { ContactUs } from './components/ContactUs';
 import { Host } from './components/Host';
 import { UserView } from './components/UserView';
+import { AboutUs } from './components/AboutUs';
 
 
 
@@ -28,6 +29,7 @@ function App() {
   <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
   <Route path="/host" element={<Host></Host>}></Route>
   <Route path="/userview" element={<UserView></UserView>}></Route>
+  <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
  </Routes>
  <Footer></Footer>
  </BrowserRouter>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../Css/RegistrationUser.css";
-import axios from "axios";
+
 import { sendUserData } from "../services/User";
 
 export function RegistrationUser() {
   const [showAdditionalFields, setShowAdditionalFields] = useState(false);
   const [userData, setUserData] =
-    useState({ Name: "", Email: "", Password: "", Phone: "", City: "" });
+    useState({ name: "", email: "", password: "", phoneNo: "", city: "" });
   const handleToggleSwitch = () => {
     setShowAdditionalFields(!showAdditionalFields);
   };
@@ -47,19 +47,19 @@ export function RegistrationUser() {
 
           <br />
           <label>Name</label>
-          <input type="text" name="Name" onChange={handleChange} required></input>
+          <input type="text" name="name" onChange={handleChange} required></input>
 
           <label>Email ID</label>
-          <input type="text" name="Email"  onChange={handleChange}required></input>
+          <input type="text" name="email"  onChange={handleChange}required></input>
 
           <label>Password</label>
-          <input type="text" name="Password"onChange={handleChange} required></input>
+          <input type="text" name="password"onChange={handleChange} required></input>
 
           <label>Phone Number</label>
-          <input type="text" name="Phone"  onChange={handleChange} required></input>
+          <input type="text" name="phoneNo"  onChange={handleChange} required></input>
 
           <label for="email">City</label>
-          <input type="text" name="City" onChange={handleChange} required></input>
+          <input type="text" name="city" onChange={handleChange} required></input>
 
           <center>
             <button className="nxtbtn" type="submit">
