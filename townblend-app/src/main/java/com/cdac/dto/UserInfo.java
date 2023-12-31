@@ -8,6 +8,7 @@ public class UserInfo {
 	private String city;
 	private String password;
 	private long phoneNo;
+	
 	public int getId() {
 		return id;
 	}

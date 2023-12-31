@@ -1,46 +1,96 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import "../Css/Navbar.css"
+import img from "../media/logo.jpg"
 
 export function NavigationBar() {
   return (
     <>
-      <Navbar style={{ backgroundColor: "#D8232A" }} variant="dark" expand="lg">
+      <Navbar  style={{ backgroundColor: "#D8232A" }} variant="dark" >
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>TechBlendLiving</Navbar.Brand>
+            <img  className="hover-effect" src={img} alt="lol" height={"70px"} />
           </LinkContainer>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <LinkContainer to="/">
+              <div className="home">
+              <LinkContainer class="" to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/login">
+              </div>
+              <div class="dropdown nav-pad">
+                <button class="dropbtn sub-nav">Login</button>
+
+                <div class="dropdown-content">
+                  <LinkContainer  to="/login-user">
+                  <Nav.Link>Login User</Nav.Link>
+                  </LinkContainer>
+              
+                  <LinkContainer to="/login-owner">
+                  <Nav.Link>Login Owner</Nav.Link>
+                  </LinkContainer>
+                 
+                  <LinkContainer to="/login-host">
+                  <Nav.Link>Login host</Nav.Link>
+                  </LinkContainer>
+                </div>
+              </div>
+              <div class="nav-pad dropdown">
+                <button class="dropbtn ">Register</button>
+
+                <div class="dropdown-content">
+                  <LinkContainer to="/registrationuser">
+                  <Nav.Link>User Registration</Nav.Link>
+                  </LinkContainer>
+           
+                  <LinkContainer to="/registrationowner">
+                  <Nav.Link>Owner Registration</Nav.Link>
+                  </LinkContainer>
+                 
+                </div>
+              </div>
+
+              {/* <LinkContainer to="/login">
                 <Nav.Link>Login</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/registrationuser">
+              </LinkContainer> */}
+              {/* <LinkContainer to="/registrationuser">
                 <Nav.Link>Registration User</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/registrationowner">
+              </LinkContainer> */}
+              {/* <LinkContainer to="/registrationowner">
                 <Nav.Link>Registration Owner</Nav.Link>
+              </LinkContainer> */}
+              <div className="nav-pad">
+              <LinkContainer   to="/dashboard">
+                <Nav.Link style={{ display: 'inline-block' }} >Owner Section</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/dashboard">
-                <Nav.Link>Owner Section</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/contactus">
+              </div>
+              <div className="nav-pad">
+              <LinkContainer  to="/contactus">
                 <Nav.Link>Contact Us</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/host">
+              </div>
+              <div className="nav-pad">
+              <LinkContainer  to="/host">
                 <Nav.Link>Host</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/userview">
-                <Nav.Link>userview</Nav.Link>
+              </div>
+              <div className="nav-pad ">
+              <LinkContainer  to="/userview">
+                <Nav.Link>User View</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/aboutus">
-                <Nav.Link>aboutus</Nav.Link>
+              </div>
+              <div className="nav-pad">
+              <LinkContainer  to="/aboutus">
+                <Nav.Link>About Us</Nav.Link>
               </LinkContainer>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              </div>
+              <div className="nav-pad">
+              <LinkContainer  to="/serviceview">
+                <Nav.Link>Service View</Nav.Link>
+              </LinkContainer>
+              </div>
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

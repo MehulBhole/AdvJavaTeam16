@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Container, Row, Table } from "react-bootstrap";
 import "../Css/Dashboard.css";
 import { FaUser } from "react-icons/fa";
 
 export function Dashboard() {
+  
+  const[details,setDetails] = useState([]);
   const [userdata, setUserData] = useState({
     name: "",
     email: "",
@@ -11,6 +13,28 @@ export function Dashboard() {
     phoneNo: "",
     city: "",
   });
+  const handleDelete=async(id)=>
+{
+ try {
+  //  const response= await HostRejectionById(id);
+  //  populateAdmindata()
+  //   console.log(response);
+ } catch (error) {
+  console.log(error);
+ }
+}
+const handleApprove=async(id)=>
+{
+ try {
+   
+      //     const response = await HostApprovalById(id);
+      // populateAdmindata()
+      //  console.log(response);
+
+ } catch (error) {
+  console.log(error);
+ }
+}
   async function populateData() {
     try {
       const id = sessionStorage.getItem("id");
@@ -65,58 +89,15 @@ export function Dashboard() {
           </div>
         
     </div>
-    <div className="right">
+    <div className="middle">
     <center> <h3>Property Details</h3></center>
-    <section className="topDashboard" >
-           
-          <Row>
-          
-            <Col  xs={12} md={6} lg={3}>
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Img variant="top" src={`holder.js/100px180`} />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col  xs={12} md={6} lg={3}>
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Img variant="top" src={`holder.js/100px180`} />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col  xs={12} md={6} lg={3}>
-              <Card style={{ width: "18rem", margin: "10px" }}>
-                <Card.Img variant="top" src={`holder.js/100px180`} />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </Col>
+   
+      <section >
+      
         
-        </Row>
-      </section>
-
-      <section style={{backgroundColor:"#f0f0f0"}}>
-        <div className="property-container">
-          <h1>Property Details</h1>
           <form>
             <div className="radiobutton">
-              <label htmlFor="property">For Rent</label>
+              <label htmlFor="property">Rental Type</label>
               <input type="radio" name="property" value="PG" /> PG
               <input type="radio" name="property" value="1BHK" /> 1BHK
               <input type="radio" name="property" value="2BHK" /> 2BHK
@@ -160,8 +141,48 @@ export function Dashboard() {
               </button>
             </center>
           </form>
-        </div>
+       
       </section>
+    </div>
+    <div className="right">
+    <center><h2>Properties</h2></center>
+         <Container className="containerHost">
+            <Row>
+            <Table striped bordered hover style={{textAlign:"center"}}>
+      <thead>
+        <tr>
+          <th>Rental Type</th>
+          <th>Rent</th>
+          <th>Furnished Status</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+         {details.map(d=>
+        <tr>
+          <td>{d.name}</td>
+          <td>{d.email}</td>
+          <td>{d.phoneNo}</td>
+          <td>{d.panNumber}</td>
+          <td>{d.address}</td>
+
+          <td>
+          <Button style={{marginLeft: 1 + 'em'}}variant="danger" onClick={()=>{
+            handleDelete(d.id)
+          }}>Reject</Button>
+           <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
+            handleApprove(d.id)
+          }}>Approve</Button>
+          </td>
+          <td>{d.Remarks}</td>
+          <td></td>
+        </tr>
+       )}
+      </tbody>
+    </Table>
+            </Row>
+        </Container>
     </div>
     </div>
   

@@ -21,6 +21,7 @@ import com.cdac.entity.Admin;
 import com.cdac.entity.PropertyOwner;
 import com.cdac.entity.PropertyOwner.ApprovalStatus;
 @RestController
+
 @CrossOrigin
 public class AdminController {
 
@@ -28,6 +29,10 @@ public class AdminController {
  private AdminService adminService;
  @Autowired
  private PropertyOwnerService propertyOwnerService;
+ @GetMapping("/admin1")
+ public String admin() {
+	 return "kiran";
+ }
 
  @PostMapping("/adminregister")
  public AdminRespone registerAdmin(@RequestBody Admin admin) {

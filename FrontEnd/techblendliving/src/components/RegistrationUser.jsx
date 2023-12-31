@@ -28,22 +28,11 @@ export function RegistrationUser() {
   return (
     <div className="userContainer">
       <div class="Reg-container">
-        <h1>Register</h1>
+        <h1>User Registration</h1>
         <br />
+      <h5><a href="/registrationowner">Register as tenant ?</a></h5><br />
         <form onSubmit={handleSubmit}>
-          <div className="toggle-switch-container">
-            <label htmlFor="toggle-switch">Owners</label>
-            <br />
-            <div className="toggle-switch">
-              <input
-                type="checkbox"
-                id="toggle-switch"
-                checked={showAdditionalFields}
-                onChange={handleToggleSwitch}
-              />
-              <label htmlFor="toggle-switch"></label>
-            </div>
-          </div>
+          
 
           <br />
           <label>Name</label>

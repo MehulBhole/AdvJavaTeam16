@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { sendOwnerData } from "../services/Owner";
 import "../Css/RegisterOwner.css";
-import { useNavigate } from "react-router-dom";
 
 export function RegistrationOwner() {
-  const navigate = useNavigate();
   const [showAdditionalFields, setShowAdditionalFields] = useState(false);
-  const handleToggleSwitch = () => {
-    setShowAdditionalFields(!showAdditionalFields);
-  };
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,8 +26,6 @@ export function RegistrationOwner() {
     try {
       const response = await sendOwnerData(formData);
       console.log(response);
-      alert("Wait for Approval !! ");
-      navigate(`/`);
     } catch (error) {
       console.log(error);
     }
@@ -41,21 +35,11 @@ export function RegistrationOwner() {
   return (
     <div className="ownercontainer">
     <div className="regowner-container">
-      <h1>Register</h1>
+      <h1>Owner Registration</h1>
+      <br />
+      <h5><a href="/registrationuser">Register as Owner ?</a></h5><br />
       <form onSubmit={handleSubmit}>
-        <div className="toggle-switch-container">
-          <label htmlFor="toggle-switch">Owners</label>
-          <br />
-          <div className="toggle-switch">
-            <input
-              type="checkbox"
-              id="toggle-switch"
-              checked={showAdditionalFields}
-              onChange={handleToggleSwitch}
-            />
-            <label htmlFor="toggle-switch"></label>
-          </div>
-        </div>
+        
 
         <label >Name</label>
           <input type="text"  name="name" onChange={handleChange} required></input>
@@ -87,7 +71,7 @@ export function RegistrationOwner() {
           ></input>
 
           <label >Date of Birth</label>
-          <input type="dob"  name="dob" required></input>
+          <input type="text"  name="Dob" required></input>
 
         <div className="form-group">
           <label>Personal Address</label>
@@ -103,7 +87,6 @@ export function RegistrationOwner() {
           <button className="nxtbtn" type="submit" >
             Next
           </button>
-
         </center>
       </form>
     </div>

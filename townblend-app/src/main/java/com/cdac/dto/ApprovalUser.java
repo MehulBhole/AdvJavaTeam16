@@ -1,6 +1,11 @@
 package com.cdac.dto;
 
 public class ApprovalUser {
+	
+	private String email;
+	private long phoneNo;
+	private String panNumber;
+	private String address;
 
 	private int id;
 	private String name;
@@ -41,8 +46,5 @@ public class ApprovalUser {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	private String email;
-	private long phoneNo;
-	private String panNumber;
-	private String address;
+	
 }
