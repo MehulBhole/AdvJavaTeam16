@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import "../Css/Host.css";
+import { FetchApprovalDetails, HostApprovalById, HostRejectionById } from "../services/HostApproval";
 export function Host(){
 
     const[details,setDetails] = useState([]);
 
     async function populateAdmindata() {
       try {
-        // const response =  await FetchAdminData();
-        // console.log(response);
-        //  setDetails(response.data);
+         const response =  await FetchApprovalDetails();
+         console.log(response);
+          setDetails(response.data);
        
       } catch (error) {
         console.log(error);
       }
 };
-const handleDelete=async(name)=>
+const handleDelete=async(id)=>
 {
  try {
-//    const response= await adminDeletion(name);
-//    populateAdmindata()
-//    console.log(response);
+   const response= await HostRejectionById(id);
+   populateAdmindata()
+    console.log(response);
  } catch (error) {
   console.log(error);
  }
 }
-const handleApprove=async(name)=>
+const handleApprove=async(id)=>
 {
  try {
-//   console.log(name);
-//      const response = await adminApproval(name);
-//      populateAdmindata()
-//        console.log(response);
+   
+          const response = await HostApprovalById(id);
+      populateAdmindata()
+       console.log(response);
 
  } catch (error) {
   console.log(error);
@@ -54,22 +55,25 @@ const handleApprove=async(name)=>
           <th>Email</th>
           <th>Phone No</th>
           <th>Pancard Number</th>
-          <th>City</th>
+          <th>Address</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
          {details.map(d=>
         <tr>
-          <td>{d.Designation}</td>
-          <td>{d.Name}</td>
-          <td>{d.Mobile}</td>
+          <td>{d.name}</td>
+          <td>{d.email}</td>
+          <td>{d.phoneNo}</td>
+          <td>{d.panNumber}</td>
+          <td>{d.address}</td>
+
           <td>
           <Button style={{marginLeft: 1 + 'em'}}variant="danger" onClick={()=>{
-            handleDelete(d.Name)
-          }}>Delete</Button>
+            handleDelete(d.id)
+          }}>Reject</Button>
            <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
-            handleApprove(d.Name)
+            handleApprove(d.id)
           }}>Approve</Button>
           </td>
           <td>{d.Remarks}</td>

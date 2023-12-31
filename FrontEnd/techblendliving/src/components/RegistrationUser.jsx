@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "../Css/RegistrationUser.css";
 
 import { sendUserData } from "../services/User";
+import { useNavigate } from "react-router-dom";
 
 export function RegistrationUser() {
-  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
+  const navigate = useNavigate();
   const [userData, setUserData] =
     useState({ name: "", email: "", password: "", phoneNo: "", city: "" });
-  const handleToggleSwitch = () => {
-    setShowAdditionalFields(!showAdditionalFields);
-  };
+ 
   const handleChange = (e)=> {
         setUserData({...userData,[e.target.name]:e.target.value});
         console.log(userData);
@@ -19,6 +18,11 @@ export function RegistrationUser() {
      try {
       console.log(userData);
        const response = await sendUserData(userData);
+       if(response.data.status){
+        navigate(`/login-user`)
+       }else{
+        alert(" Already Registered !!")
+       }
        console.log(response);      
      } catch (error) {
       console.log(error);
@@ -28,22 +32,11 @@ export function RegistrationUser() {
   return (
     <div className="userContainer">
       <div class="Reg-container">
-        <h1>Register</h1>
+        <h1>User Registration</h1>
         <br />
+      <h5><a href="/registrationowner">Register as tenant ?</a></h5><br />
         <form onSubmit={handleSubmit}>
-          <div className="toggle-switch-container">
-            <label htmlFor="toggle-switch">Owners</label>
-            <br />
-            <div className="toggle-switch">
-              <input
-                type="checkbox"
-                id="toggle-switch"
-                checked={showAdditionalFields}
-                onChange={handleToggleSwitch}
-              />
-              <label htmlFor="toggle-switch"></label>
-            </div>
-          </div>
+          
 
           <br />
           <label>Name</label>

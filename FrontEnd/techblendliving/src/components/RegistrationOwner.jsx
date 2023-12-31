@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { sendOwnerData } from "../services/Owner";
 import "../Css/RegisterOwner.css";
+import { useNavigate } from "react-router-dom";
 
 export function RegistrationOwner() {
-  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
-  const handleToggleSwitch = () => {
-    setShowAdditionalFields(!showAdditionalFields);
-  };
+  const navigate  =  useNavigate();
+
 
   const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Mobile: "",
-    Password: "",
-    Address: "",
-    Dob: "",
-    Pannumber: "",
+    name: "",
+    email: "",
+    phoneNo: "",
+    password: "",
+    address: "",
+    dob: "",
+    panNumber: "",
   });
 
   const handleChange = (e) => {
@@ -28,6 +27,12 @@ export function RegistrationOwner() {
     try {
       const response = await sendOwnerData(formData);
       console.log(response);
+      if(!response.data.status){
+         alert("User Already Registered !!");
+      }else{
+        alert("Wait till Approval !!");
+        navigate(`/`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -37,37 +42,27 @@ export function RegistrationOwner() {
   return (
     <div className="ownercontainer">
     <div className="regowner-container">
-      <h1>Register</h1>
+      <h1>Owner Registration</h1>
+      <br />
+      <h5><a href="/registrationuser">Register as Owner ?</a></h5><br />
       <form onSubmit={handleSubmit}>
-        <div className="toggle-switch-container">
-          <label htmlFor="toggle-switch">Owners</label>
-          <br />
-          <div className="toggle-switch">
-            <input
-              type="checkbox"
-              id="toggle-switch"
-              checked={showAdditionalFields}
-              onChange={handleToggleSwitch}
-            />
-            <label htmlFor="toggle-switch"></label>
-          </div>
-        </div>
+        
 
         <label >Name</label>
-          <input type="text"  name="Name" onChange={handleChange} required></input>
+          <input type="text"  name="name" onChange={handleChange} required></input>
 
           <label >Email ID</label>
-          <input type="text" name="Email"  onChange={handleChange}  required></input>
+          <input type="text" name="email"  onChange={handleChange}  required></input>
 
           <label >Password</label>
-          <input type="text" name="Password"  onChange={handleChange}  required></input>
+          <input type="text" name="password"  onChange={handleChange}  required></input>
 
           <label >Phone Number</label>
           <input
             type="text"
             maxLength={10}
             minLength={10}
-            name ="Mobile"
+            name ="phoneNo"
             onChange={handleChange} 
             required
           ></input>
@@ -75,7 +70,7 @@ export function RegistrationOwner() {
           <label >Pancard Number</label>
           <input
             type="text"
-            name="Pannumber"
+            name="panNumber"
             maxLength={10}
             minLength={10}
             onChange={handleChange} 
@@ -83,7 +78,7 @@ export function RegistrationOwner() {
           ></input>
 
           <label >Date of Birth</label>
-          <input type="date"  name="Dob" required></input>
+          <input type="text"  name="Dob" required></input>
 
         <div className="form-group">
           <label>Personal Address</label>
@@ -92,7 +87,7 @@ export function RegistrationOwner() {
             rows={4}
             cols={10}
             onChange={handleChange}
-            name="Address"
+            name="address"
           />
         </div>
         <center>

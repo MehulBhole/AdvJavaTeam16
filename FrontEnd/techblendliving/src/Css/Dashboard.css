@@ -1,199 +1,112 @@
-
-/* body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 1000px;
-    background-image: url(BG5.svg);
+    background-image: url('./BG5.svg');
+}
 
-} */
-.maindiv{
+.maindiv {
     display: flex;
     height: 1300px;
-    background-image: url(./BG5.svg);
 }
-.left{
-    padding: 5%;
-    margin: 3%;
-    width: 20%;
+
+.left, .right, .middle {
+    margin: 1%;
+    margin-top: 2%;
     border: 2px #e8e8e8 solid;
     border-radius: 15px;
     box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.3);
-}
-.right{
-    width: 80%;
-    margin-top: 15px;
-    background-color: #ffffff;
-}
-.topDashboard{
-    margin-top:"40px";
-    background-Color:"#ffffff";
-    border-radius: 15px;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
-
+    background-color: white;
 }
 
-.property-container {
-    /* max-width: 50rem; */
-    width: 800px;
-	height: 900px;
-    margin: 50px auto 0px;
-    padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
-    
+.left {
+    width: 20%;
 }
-.radiobutton{
+
+.right {
+    width: 40%;
+}
+
+.middle {
+    width: 40%;
+    padding: 2%;
+}
+
+h3 {
+    text-align: center;
+}
+
+form {
     display: flex;
-    align-content: center;
-
+    flex-direction: column;
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.radiobutton {
+    display: flex;
+    align-items: center;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
-input {
-	width: 100%;
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
     padding: 8px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-	transition: background-color 0.3s ease;
-	outline: none;
-	border: none;
-  border-bottom: 1px solid black;
-  outline: none;
+    margin-bottom: 15px;
+    
+    transition: background-color 0.3s ease;
+    outline: none;
+    
+    border-radius: 5px;
 }
 
 button {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     background-color: #007BFF;
     color: #ffffff;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
-.nxtbtn{
-	border-radius: 3px;
-	background-color: #D8232A;
-	width: 20rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
-	
+.nxtbtn {
+    border-radius: 5px;
+    background-color: #D8232A;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.txtarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .or-separator {
-    position: relative;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .or-separator span {
-    position: absolute;
-    left: 0;
-    right: 0;
     background-color: #f0f0f0;
     padding: 10px;
 }
-
-.login-options {
-	height: 2rem;
-    display: flex;
-	align-items: center;
-    justify-content: center;
-	text-align: center;
-
-  
-}
-
-a {
-    color: #D8232A;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-.Foot{
-	max-width: 25rem;
-    padding: 30px;
-    margin: 0px auto;
-    background-color: #ebebeb;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
-}
-.txt{
-	color: black;
-	
-}
-.toggle-switch {
-    
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    
-  }
-  
-  .toggle-switch label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    border-radius: 34px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  .toggle-switch label:before {
-    position: absolute;
-    content: '';
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-  }
-  
-  .toggle-switch input:checked + label {
-    background-color: #D8232A;
-  }
-  
-  .toggle-switch input:checked + label:before {
-    transform: translateX(26px);
-  }
-  .toggleee{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .txtarea{
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-	transition: background-color 0.3s ease;
-	outline: none;
-	border: none;
-    border-bottom: 1px solid black;
-  } 
