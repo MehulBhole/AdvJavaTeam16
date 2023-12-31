@@ -10,6 +10,16 @@ export async function FetchApprovalDetails()
     }
                 
 }
+export async function HostLoginCredentials(hostdata)
+{        
+    try {
+        const response = axios.post("http://localhost:9090/hostlogin",hostdata);
+        return response; 
+    }catch(error){
+            console.log(error);
+    }
+                
+}
 export async function HostApprovalById(id)
 {        
     console.log(id)

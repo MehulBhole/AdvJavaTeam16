@@ -10,3 +10,13 @@ export async function sendOwnerData(formData)
     }
                 
 }
+export async function loginOwnerData(formData)
+{        
+    try {
+        const response = axios.post("http://localhost:9090/owner-login",formData);
+        return response; 
+    }catch(error){
+            console.log(error);
+    }
+                
+}

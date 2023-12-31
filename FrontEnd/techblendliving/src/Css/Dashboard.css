@@ -56,10 +56,10 @@ input[type="file"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
-    box-sizing: border-box;
+    
     transition: background-color 0.3s ease;
     outline: none;
-    border: 1px solid #ccc;
+    
     border-radius: 5px;
 }
 

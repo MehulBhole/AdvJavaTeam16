@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { sendOwnerData } from "../services/Owner";
 import "../Css/RegisterOwner.css";
+import { useNavigate } from "react-router-dom";
 
 export function RegistrationOwner() {
-  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
+  const navigate  =  useNavigate();
 
 
   const [formData, setFormData] = useState({
@@ -26,6 +27,12 @@ export function RegistrationOwner() {
     try {
       const response = await sendOwnerData(formData);
       console.log(response);
+      if(!response.data.status){
+         alert("User Already Registered !!");
+      }else{
+        alert("Wait till Approval !!");
+        navigate(`/`);
+      }
     } catch (error) {
       console.log(error);
     }

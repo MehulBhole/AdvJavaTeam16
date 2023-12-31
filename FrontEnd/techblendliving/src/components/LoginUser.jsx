@@ -21,6 +21,8 @@ export function LoginUser() {
         sessionStorage.setItem('id', response.data.id);
         navigate(`/userview`)
 
+      }else{
+        alert("Invalid Credentials !!");
       }
 
       console.log(response);

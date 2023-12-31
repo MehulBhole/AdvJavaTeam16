@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "../Css/RegistrationUser.css";
 
 import { sendUserData } from "../services/User";
+import { useNavigate } from "react-router-dom";
 
 export function RegistrationUser() {
-  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
+  const navigate = useNavigate();
   const [userData, setUserData] =
     useState({ name: "", email: "", password: "", phoneNo: "", city: "" });
-  const handleToggleSwitch = () => {
-    setShowAdditionalFields(!showAdditionalFields);
-  };
+ 
   const handleChange = (e)=> {
         setUserData({...userData,[e.target.name]:e.target.value});
         console.log(userData);
@@ -19,6 +18,11 @@ export function RegistrationUser() {
      try {
       console.log(userData);
        const response = await sendUserData(userData);
+       if(response.data.status){
+        navigate(`/login-user`)
+       }else{
+        alert(" Already Registered !!")
+       }
        console.log(response);      
      } catch (error) {
       console.log(error);

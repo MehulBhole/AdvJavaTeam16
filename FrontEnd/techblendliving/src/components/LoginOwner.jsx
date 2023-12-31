@@ -4,6 +4,7 @@ import { sendLoginData } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { loginOwnerData } from "../services/Owner";
 
 export function LoginOwner() {
   const navigate = useNavigate();
@@ -15,12 +16,13 @@ export function LoginOwner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await sendLoginData(userlogin);
+      const response = await loginOwnerData(userlogin);
 
       if (response.data.status) {
-        sessionStorage.setItem('id', response.data.id);
-        navigate(`/userview`)
-
+        sessionStorage.setItem('owner-id', response.data.id);
+        navigate(`/dashboard`)
+      }else{
+        alert("Invalid Credentials !!");
       }
 
       console.log(response);

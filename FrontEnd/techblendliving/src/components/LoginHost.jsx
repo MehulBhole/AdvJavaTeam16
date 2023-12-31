@@ -4,6 +4,7 @@ import { sendLoginData } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { HostLoginCredentials } from "../services/HostApproval";
 
 export function LoginHost() {
   const navigate = useNavigate();
@@ -15,12 +16,14 @@ export function LoginHost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await sendLoginData(userlogin);
+      const response = await HostLoginCredentials(userlogin);
 
       if (response.data.status) {
-        sessionStorage.setItem('id', response.data.id);
-        navigate(`/userview`)
+        sessionStorage.setItem('host-id', response.data.id);
+        navigate(`/host`)
 
+      }else{
+        alert("Host Login required !!");
       }
 
       console.log(response);
